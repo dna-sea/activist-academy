@@ -6,6 +6,7 @@ import {
   VisionIcon, ConnectionIcon, ActionIcon, InfrastructureIcon,
   ArchetypeIcon, HouseIcon, LearningPathIcon, DiscoveryBoltIcon,
 } from '../icons/LandingIcons';
+import { GJLAShieldIcon } from '../icons/GJLALogo';
 
 const HOUSE_ICONS = { Vision: VisionIcon, Connection: ConnectionIcon, Action: ActionIcon, Infrastructure: InfrastructureIcon };
 
@@ -77,40 +78,13 @@ export default function LandingPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={getTransition(0.5, { delay: 0.4 })}
-            className="text-lg text-warm-white/80 mb-10 leading-relaxed max-w-lg mx-auto"
+            className="text-lg md:text-xl text-warm-white/80 mb-10 leading-relaxed max-w-lg mx-auto"
           >
             Find out which of 12 activist archetypes matches your strengths,
             discover your house, and get a personalized learning path through
             the Activist Academy curriculum.
           </motion.p>
 
-          <motion.button
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={getTransition(0.5, { delay: 0.6 })}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={startQuiz}
-            className="bg-gold text-navy font-bold text-lg px-10 py-4 rounded-xl
-                       hover:bg-gold/90 transition-colors cursor-pointer
-                       shadow-lg shadow-gold/25 min-h-11
-                       focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
-          >
-            Begin Your Discovery
-          </motion.button>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={getTransition(0.5, { delay: 0.8 })}
-            className="mt-6 flex items-center justify-center gap-6 text-warm-white/50 text-sm"
-          >
-            <span>54 questions</span>
-            <span className="w-1 h-1 rounded-full bg-warm-white/30" />
-            <span>~20–30 minutes</span>
-            <span className="w-1 h-1 rounded-full bg-warm-white/30" />
-            <span>12 archetypes</span>
-          </motion.div>
         </motion.div>
       </div>
 
@@ -144,7 +118,7 @@ export default function LandingPage() {
               >
                 <item.Icon size={48} className="mb-3" />
                 <h3 className="text-warm-white font-bold text-lg mb-2">{item.title}</h3>
-                <p className="text-warm-white/60 text-sm leading-relaxed">{item.desc}</p>
+                <p className="text-warm-white/60 text-sm md:text-base leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -157,7 +131,7 @@ export default function LandingPage() {
           <h2 className="text-2xl md:text-3xl font-bold text-warm-white text-center mb-3">
             The Four Houses
           </h2>
-          <p className="text-warm-white/60 text-center text-sm mb-8 max-w-md mx-auto">
+          <p className="text-warm-white/60 text-center text-sm md:text-base mb-8 max-w-md mx-auto">
             Every movement needs all four. Which one calls to you?
           </p>
           <div className="grid grid-cols-2 gap-3">
@@ -170,10 +144,10 @@ export default function LandingPage() {
                   style={{ backgroundColor: house.color + '20' }}
                 >
                   <Icon size={40} className="mb-2" />
-                  <h3 className="font-bold text-warm-white text-sm mb-1">
+                  <h3 className="font-bold text-warm-white text-sm md:text-base mb-1">
                     House of {house.name}
                   </h3>
-                  <p className="text-warm-white/60 text-xs leading-relaxed">{house.tagline}</p>
+                  <p className="text-warm-white/60 text-xs md:text-sm leading-relaxed">{house.tagline}</p>
                 </div>
               );
             })}
@@ -198,10 +172,10 @@ export default function LandingPage() {
                   {phase.num}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-warm-white font-bold text-sm mb-0.5">{phase.title}</h3>
-                  <p className="text-warm-white/60 text-xs leading-relaxed">{phase.desc}</p>
+                  <h3 className="text-warm-white font-bold text-sm md:text-base mb-0.5">{phase.title}</h3>
+                  <p className="text-warm-white/60 text-xs md:text-sm leading-relaxed">{phase.desc}</p>
                 </div>
-                <span className="text-warm-white/30 text-xs flex-shrink-0 pt-0.5">
+                <span className="text-warm-white/30 text-xs md:text-sm flex-shrink-0 pt-0.5">
                   {phase.questions}q
                 </span>
               </div>
@@ -226,13 +200,13 @@ export default function LandingPage() {
           <h2 className="text-xl md:text-2xl font-bold text-warm-white mb-3">
             This Isn't a Test
           </h2>
-          <p className="text-warm-white/70 text-sm leading-relaxed mb-2">
+          <p className="text-warm-white/70 text-sm md:text-base leading-relaxed mb-2">
             There are no right or wrong answers. Every archetype is powerful.
             Every house is essential. The Discovery Engine identifies your
             natural strengths and maps them to where you can make the
             greatest impact.
           </p>
-          <p className="text-warm-white/50 text-xs">
+          <p className="text-warm-white/50 text-xs md:text-sm">
             Scenario-based questions reveal your instincts through choice, not self-report.
           </p>
         </Section>
@@ -266,13 +240,13 @@ export default function LandingPage() {
           <h2 className="text-xl md:text-2xl font-bold text-warm-white mb-3">
             Before You Begin
           </h2>
-          <p className="text-warm-white/70 text-sm leading-relaxed mb-3">
+          <p className="text-warm-white/70 text-sm md:text-base leading-relaxed mb-3">
             Your privacy is our priority. This quiz runs entirely in your
             browser — no data is collected, stored, or sent to any server. That
             also means there's no way to save your progress and return later, so
             set aside 20–30 minutes to complete it in one sitting.
           </p>
-          <p className="text-warm-white/70 text-sm leading-relaxed">
+          <p className="text-warm-white/70 text-sm md:text-base leading-relaxed">
             When you reach your results,{' '}
             <span className="font-semibold text-warm-white">
               download your Character Sheet as a PDF or image
@@ -288,7 +262,7 @@ export default function LandingPage() {
           <h2 className="text-2xl md:text-3xl font-bold text-warm-white mb-4">
             Ready to find your archetype?
           </h2>
-          <p className="text-warm-white/60 text-sm mb-8">
+          <p className="text-warm-white/60 text-sm md:text-base mb-8">
             ~20–30 minutes. Completely free. Shareable character sheet at the end.
           </p>
           <motion.button
@@ -306,13 +280,28 @@ export default function LandingPage() {
       </div>
 
       {/* ── Footer ── */}
-      <div className="px-6 pb-8 text-center space-y-2">
-        <p className="text-warm-white/30 text-xs">
-          &copy; 2026 Danni Askini. All rights reserved.
+      <div className="px-6 pb-8 text-center space-y-3">
+        <div className="flex flex-col items-center gap-2">
+          <GJLAShieldIcon size={24} variant="white" />
+          <p
+            className="text-warm-white/40 font-bold"
+            style={{ fontFamily: 'Georgia, "Times New Roman", serif', fontSize: 12 }}
+          >
+            Gender Justice League Action
+          </p>
+          <p
+            className="uppercase"
+            style={{ fontSize: 8, letterSpacing: '0.2em', color: 'rgba(232, 160, 32, 0.3)' }}
+          >
+            Dignity &middot; Rights &middot; Power
+          </p>
+        </div>
+        <p className="text-warm-white/30 text-xs md:text-sm">
+          &copy; 2026 Gender Justice League Action. All rights reserved.
         </p>
         <button
           onClick={() => setShowPrivacy(true)}
-          className="text-warm-white/30 text-xs underline hover:text-warm-white/50 transition-colors cursor-pointer"
+          className="text-warm-white/30 text-xs md:text-sm underline hover:text-warm-white/50 transition-colors cursor-pointer"
         >
           Privacy Policy
         </button>
