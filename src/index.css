@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  /* Primary Palette */
+  --color-navy: #1B2A4A;
+  --color-teal: #2A7F8E;
+  --color-gold: #D4A843;
+  --color-warm-white: #F5F1EB;
+  --color-charcoal: #2D2D2D;
+
+  /* House Colors */
+  --color-house-vision: #6B3FA0;
+  --color-house-connection: #2D8659;
+  --color-house-action: #C4652A;
+  --color-house-infrastructure: #3A6B8C;
+
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media screen and (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
+
+@keyframes fill-bar {
+  from { width: 0%; }
+}
+
+.stat-bar-fill {
+  animation: fill-bar 0.8s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
