@@ -107,7 +107,7 @@ export default function LandingPage() {
           >
             <span>54 questions</span>
             <span className="w-1 h-1 rounded-full bg-warm-white/30" />
-            <span>~15 minutes</span>
+            <span>~20–30 minutes</span>
             <span className="w-1 h-1 rounded-full bg-warm-white/30" />
             <span>12 archetypes</span>
           </motion.div>
@@ -238,6 +238,50 @@ export default function LandingPage() {
         </Section>
       </div>
 
+      {/* ── Before You Begin ── */}
+      <div className="px-6 py-12 md:py-16">
+        <Section className="max-w-xl mx-auto text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" width={48} height={48} className="mx-auto mb-4">
+            {/* Shield outline */}
+            <path
+              d="M24 4 L42 12 L42 26 C42 36 34 43 24 46 C14 43 6 36 6 26 L6 12 Z"
+              stroke="#2A7F8E"
+              strokeWidth="2"
+              strokeLinejoin="round"
+              fill="none"
+            />
+            {/* Lock body */}
+            <rect x="18" y="22" width="12" height="10" rx="2" stroke="#2A7F8E" strokeWidth="1.5" fill="none" />
+            {/* Lock shackle */}
+            <path
+              d="M20 22 V18 C20 15 22 13 24 13 C26 13 28 15 28 18 V22"
+              stroke="#2A7F8E"
+              strokeWidth="1.5"
+              strokeLinecap="round"
+              fill="none"
+            />
+            {/* Keyhole */}
+            <circle cx="24" cy="27" r="1.5" fill="#2A7F8E" opacity="0.6" />
+          </svg>
+          <h2 className="text-xl md:text-2xl font-bold text-warm-white mb-3">
+            Before You Begin
+          </h2>
+          <p className="text-warm-white/70 text-sm leading-relaxed mb-3">
+            Your privacy is our priority. This quiz runs entirely in your
+            browser — no data is collected, stored, or sent to any server. That
+            also means there's no way to save your progress and return later, so
+            set aside 20–30 minutes to complete it in one sitting.
+          </p>
+          <p className="text-warm-white/70 text-sm leading-relaxed">
+            When you reach your results,{' '}
+            <span className="font-semibold text-warm-white">
+              download your Character Sheet as a PDF or image
+            </span>
+            . Once you close or refresh the page, your results are gone for good.
+          </p>
+        </Section>
+      </div>
+
       {/* ── Bottom CTA ── */}
       <div className="px-6 py-16 md:py-20 text-center">
         <Section className="max-w-lg mx-auto">
@@ -245,7 +289,7 @@ export default function LandingPage() {
             Ready to find your archetype?
           </h2>
           <p className="text-warm-white/60 text-sm mb-8">
-            ~15 minutes. Completely free. Shareable character sheet at the end.
+            ~20–30 minutes. Completely free. Shareable character sheet at the end.
           </p>
           <motion.button
             whileHover={{ scale: 1.05 }}
