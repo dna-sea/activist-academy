@@ -18,14 +18,14 @@ export default function BrandingFooter() {
       style={{ borderTop: '1px solid rgba(27, 42, 74, 0.12)' }}
     >
       {/* Logo + program attribution */}
-      <div className="flex items-center gap-2.5 justify-center mb-3">
-        <GJLAShieldIcon size={28} />
+      <div className="flex items-center gap-3 justify-center mb-3">
+        <GJLAShieldIcon size={32} />
         <div style={{ lineHeight: 1.35 }}>
           <div
             style={{
               fontFamily: 'Georgia, "Times New Roman", serif',
               fontWeight: 700,
-              fontSize: 13,
+              fontSize: 16,
               color: '#1D7A6E',
               letterSpacing: '0.02em',
             }}
@@ -35,10 +35,10 @@ export default function BrandingFooter() {
           <div
             style={{
               fontFamily: 'Calibri, "Segoe UI", system-ui, sans-serif',
-              fontSize: 10,
+              fontSize: 13,
               color: '#2D2D2D',
               opacity: 0.45,
-              marginTop: 1,
+              marginTop: 2,
             }}
           >
             A program of Gender Justice League Action
@@ -54,11 +54,11 @@ export default function BrandingFooter() {
           rel="noopener noreferrer"
           style={{
             fontFamily: 'Calibri, "Segoe UI", system-ui, sans-serif',
-            fontSize: 10.5,
+            fontSize: 13,
             color: '#1D7A6E',
             textDecoration: 'none',
             display: 'block',
-            marginBottom: 4,
+            marginBottom: 5,
           }}
         >
           www.theactivistacademy.org
@@ -66,7 +66,7 @@ export default function BrandingFooter() {
         <div
           style={{
             fontFamily: 'Calibri, "Segoe UI", system-ui, sans-serif',
-            fontSize: 8,
+            fontSize: 10,
             fontWeight: 700,
             color: '#E8A020',
             opacity: 0.5,
