@@ -5,12 +5,16 @@ export const archetypes = {
     orientationWeight: { insideOutside: 0, righteousnessRelationship: 1 },
     motivationBonus: ['justice', 'disruption', 'narrative'],
     description: 'You see the future and articulate the destination. You speak in possibilities others haven\'t imagined. You generate the moral and imaginative horizon that pulls movements forward.',
+    growthEdge: 'Your greatest risk is detachment from operational reality. You may articulate a destination so compellingly that you lose patience with the slow, relational work of actually getting there. Your growth edge is learning to distribute the vision\u2014to build others\' capacity to own the destination, so the movement does not depend on your voice alone.',
     exemplarName: 'Martin Luther King Jr.',
     exemplar: 'Martin Luther King Jr. \u2014 dream rhetoric + moral imagination; fused prophetic vision with narrative power to redefine the American conscience.',
     exemplarImage: 'martin-luther-king-jr.jpg',
     secondExemplarName: 'Harvey Milk',
     secondExemplar: 'Harvey Milk \u2014 hope as a political weapon; built unlikely coalitions in San Francisco by making people believe in a future that didn\'t yet exist.',
     secondExemplarImage: null,
+    thirdExemplarName: 'Sojourner Truth',
+    thirdExemplar: 'Sojourner Truth \u2014 transformed the abolitionist and women\'s suffrage movements by articulating a vision of freedom that refused to separate race from gender.',
+    thirdExemplarImage: null,
     icon: '/icons/visionary.png',
     volunteerRoles: [
       'Campaign spokesperson or public representative',
@@ -22,6 +26,20 @@ export const archetypes = {
       buildInto: ['Tactical Innovation & Earned Media', 'Political Education & Group Learning'],
       supplement: ['Organizing & Base-Building', 'Resource & Capacity Development'],
     },
+    relationships: {
+      bestFriend: {
+        archetypeKey: 'storyteller',
+        description: 'The Storyteller is your natural amplifier. You see the destination; they make others feel it. Together, you create narratives so compelling that people don\'t just understand the future\u2014they fight for it.',
+      },
+      unlikelyAlly: {
+        archetypeKey: 'operator',
+        description: 'You might overlook the Operator\u2014their world of budgets and logistics feels far from your moral imagination. But every vision that actually changed the world had an Operator who made it real.',
+      },
+      intentionalPartner: {
+        archetypeKey: 'diplomat',
+        description: 'You dream of transformation; the Diplomat negotiates incremental change within the very systems you want to transcend. The tension is real\u2014but movements need both the dream and the deal.',
+      },
+    },
   },
   strategist: {
     key: 'strategist', house: 'vision', name: 'The Strategist',
@@ -29,12 +47,16 @@ export const archetypes = {
     orientationWeight: { insideOutside: 0, righteousnessRelationship: -1 },
     motivationBonus: ['policy', 'disruption', 'justice'],
     description: 'You map power, sequence moves, and think three steps ahead. You design campaigns that connect today\'s action to next year\'s victory. You are the chess player of the movement.',
+    growthEdge: 'Your greatest risk is treating people as pieces on a board. Your systems-level thinking can make you impatient with the emotional, relational, and narrative dimensions of movement work. Your growth edge is learning to act under uncertainty, to trust relational intelligence alongside strategic intelligence, and to value contributions that are emotional rather than analytical.',
     exemplarName: 'Bayard Rustin',
     exemplar: 'Bayard Rustin \u2014 orchestrated the March on Washington; master tactician who sequenced mass action with legislative strategy while building organizational infrastructure.',
     exemplarImage: 'bayard-rustin.jpg',
     secondExemplarName: 'Ruth Bader Ginsburg',
     secondExemplar: 'Ruth Bader Ginsburg \u2014 built the legal architecture of gender equality through decades of strategic litigation; sequenced cases to construct precedent incrementally.',
     secondExemplarImage: 'ruth-bader-ginsburg.jpg',
+    thirdExemplarName: 'Evan Wolfson',
+    thirdExemplar: 'Evan Wolfson \u2014 authored the strategic blueprint for the marriage equality movement years before it became politically viable; designed the state-by-state litigation strategy that built precedent toward a federal constitutional right.',
+    thirdExemplarImage: null,
     icon: '/icons/strategist.png',
     volunteerRoles: [
       'Campaign strategy consultant',
@@ -46,6 +68,20 @@ export const archetypes = {
       buildInto: ['Legislative & Policy Strategy', 'Legal & Constitutional Frameworks'],
       supplement: ['Communications & Narrative Strategy', 'Healing & Sustainability'],
     },
+    relationships: {
+      bestFriend: {
+        archetypeKey: 'architect',
+        description: 'The Architect shares your love of systems-level thinking. You sequence the campaign; they build the institutional framework that makes your victories permanent. Two minds that think in decades.',
+      },
+      unlikelyAlly: {
+        archetypeKey: 'organizer',
+        description: 'You map power from above; the Organizer builds it from below. Your strategic blueprints need their grassroots intelligence, and their base-building needs your campaign architecture.',
+      },
+      intentionalPartner: {
+        archetypeKey: 'healer',
+        description: 'You see people as strategic assets; the Healer sees them as whole human beings. This tension will make you uncomfortable\u2014and that discomfort is exactly where your growth edge lives.',
+      },
+    },
   },
   analyst: {
     key: 'analyst', house: 'vision', name: 'The Analyst',
@@ -53,12 +89,16 @@ export const archetypes = {
     orientationWeight: { insideOutside: 0, righteousnessRelationship: 0 },
     motivationBonus: ['justice', 'policy', 'narrative'],
     description: 'You research, framework, and diagnose. You produce the intellectual infrastructure movements build on. You turn lived experience into theory and theory into tools.',
-    exemplarName: 'Kimberlé Crenshaw',
-    exemplar: 'Kimberlé Crenshaw \u2014 developed intersectionality as an analytical framework; produced intellectual infrastructure that transformed how movements understand overlapping systems of oppression.',
+    growthEdge: 'Your greatest risk is substituting analysis for action. Your comfort with complexity can become a justification for never simplifying enough to communicate with a broad public. Your growth edge is learning to translate without diluting\u2014to express complex understanding in forms that organizers can use in a doorstep conversation and that storytellers can weave into compelling narrative.',
+    exemplarName: 'Kimberl\u00e9 Crenshaw',
+    exemplar: 'Kimberl\u00e9 Crenshaw \u2014 developed intersectionality as an analytical framework; produced intellectual infrastructure that transformed how movements understand overlapping systems of oppression.',
     exemplarImage: 'kimberle-crenshaw.jpg',
     secondExemplarName: 'Angela Davis',
     secondExemplar: 'Angela Davis \u2014 articulated a radical vision linking racial justice, feminism, and anti-capitalism; produced intellectual frameworks for abolition that continue to shape movements.',
     secondExemplarImage: 'angela-davis.jpg',
+    thirdExemplarName: 'Pauli Murray',
+    thirdExemplar: 'Pauli Murray \u2014 legal theorist whose analytical work on the intersections of race and sex discrimination produced arguments used by both Thurgood Marshall and Ruth Bader Ginsburg in landmark constitutional litigation.',
+    thirdExemplarImage: 'pauli-murray.jpg',
     icon: '/icons/analyst.png',
     volunteerRoles: [
       'Research assistant for think tanks or nonprofits',
@@ -70,6 +110,20 @@ export const archetypes = {
       buildInto: ['Legal & Constitutional Frameworks', 'Communications & Narrative Strategy'],
       supplement: ['Organizing & Base-Building', 'Power & Resource Mapping'],
     },
+    relationships: {
+      bestFriend: {
+        archetypeKey: 'bridgeBuilder',
+        description: 'The Bridge-Builder translates your frameworks into language coalitions can use. You produce the intellectual infrastructure; they build the relational infrastructure to deploy it.',
+      },
+      unlikelyAlly: {
+        archetypeKey: 'guardian',
+        description: 'You analyze systems from a distance; the Guardian responds to their failures up close. Their frontline experience is the data your frameworks need to stay grounded in reality.',
+      },
+      intentionalPartner: {
+        archetypeKey: 'agitator',
+        description: 'You study injustice; the Agitator confronts it. You write the brief; they lead the march. Neither is sufficient alone\u2014evidence without urgency is academic, and urgency without evidence is noise.',
+      },
+    },
   },
   bridgeBuilder: {
     key: 'bridgeBuilder', house: 'connection', name: 'The Bridge-Builder',
@@ -77,12 +131,16 @@ export const archetypes = {
     orientationWeight: { insideOutside: -1, righteousnessRelationship: -1 },
     motivationBonus: ['community', 'policy', 'service'],
     description: 'You create unlikely alliances. You move fluently between communities, sectors, and political cultures. You translate across difference and build coalitions that hold.',
+    growthEdge: 'Your greatest risk is conflict avoidance disguised as diplomacy. Your instinct to find common ground can lead you to smooth over disagreements that need direct confrontation, or to maintain alliances that are actually causing harm. Your growth edge is learning to distinguish between bridges worth building and bridges that serve the powerful at the expense of the marginalized.',
     exemplarName: 'Dolores Huerta',
     exemplar: 'Dolores Huerta \u2014 co-founded the UFW; moved between farmworker communities, labor unions, and political coalitions while building relational base power.',
     exemplarImage: 'dolores-huerta.jpg',
     secondExemplarName: 'Eleanor Roosevelt',
     secondExemplar: 'Eleanor Roosevelt \u2014 navigated the inside game at the highest levels of power; co-authored the Universal Declaration of Human Rights while building coalitions across nations.',
     secondExemplarImage: 'eleanor-roosevelt.jpg',
+    thirdExemplarName: 'John Lewis',
+    thirdExemplar: 'John Lewis \u2014 moved between the confrontational direct action of SNCC and the institutional politics of the U.S. Congress, maintaining credibility in both worlds across six decades of civil rights advocacy.',
+    thirdExemplarImage: null,
     icon: '/icons/bridge-builder.png',
     volunteerRoles: [
       'Coalition facilitator',
@@ -94,6 +152,20 @@ export const archetypes = {
       buildInto: ['Electoral & Campaign Strategy', 'Legislative & Policy Strategy'],
       supplement: ['Communications & Narrative Strategy', 'Healing & Sustainability'],
     },
+    relationships: {
+      bestFriend: {
+        archetypeKey: 'organizer',
+        description: 'The Organizer shares your gift for group intelligence and relational leadership. You build coalitions across difference; they build power within communities. Together, you construct movements that are both broad and deep.',
+      },
+      unlikelyAlly: {
+        archetypeKey: 'analyst',
+        description: 'The Analyst\'s frameworks might feel abstract to you, but they produce the intellectual ammunition your coalitions need to credibly demand change.',
+      },
+      intentionalPartner: {
+        archetypeKey: 'architect',
+        description: 'You build relationships; the Architect builds structures. You prioritize flexibility and human connection; they prioritize durability and institutional design. The tension between coalition and institution is where movements get built to last.',
+      },
+    },
   },
   healer: {
     key: 'healer', house: 'connection', name: 'The Healer',
@@ -101,12 +173,16 @@ export const archetypes = {
     orientationWeight: { insideOutside: 0, righteousnessRelationship: -1 },
     motivationBonus: ['service', 'community', 'narrative'],
     description: 'You center care, restoration, and sustainability. You hold space for grief, trauma, and renewal. You are the one who keeps movements human when the work tries to break people.',
+    growthEdge: 'Your greatest risk is avoiding confrontation in the name of care. You may hold space so gently that you fail to hold people accountable, or prioritize emotional safety to the point of enabling dysfunction. You may also neglect your own healing. Your growth edge is learning to pair your gift for care with a capacity for honest confrontation, and building the support structures that allow you to sustain the work of sustaining others.',
     exemplarName: 'adrienne maree brown',
     exemplar: 'adrienne maree brown \u2014 emergent strategy and pleasure activism; reframed movement sustainability around fractal organizing, somatics, and the imagination of liberatory futures.',
     exemplarImage: null,
     secondExemplarName: 'Audre Lorde',
     secondExemplar: 'Audre Lorde \u2014 redefined self-care as political warfare; her writing on the erotic as power and the uses of anger remain foundational to movement sustainability.',
     secondExemplarImage: 'audre-lorde.jpg',
+    thirdExemplarName: 'Desmond Tutu',
+    thirdExemplar: 'Desmond Tutu \u2014 pioneered the Truth and Reconciliation Commission model, demonstrating that healing collective trauma is not a detour from justice but a pathway to it.',
+    thirdExemplarImage: null,
     icon: '/icons/healer.png',
     volunteerRoles: [
       'Peer counselor or crisis line volunteer',
@@ -118,6 +194,20 @@ export const archetypes = {
       buildInto: ['Arts & Cultural Events', 'Political Education & Group Learning'],
       supplement: ['Organizing & Base-Building', 'Communications & Narrative Strategy'],
     },
+    relationships: {
+      bestFriend: {
+        archetypeKey: 'guardian',
+        description: 'The Guardian shares your commitment to direct care and mutual aid. You hold space for healing; they hold the line for survival. Together, you keep communities whole when systems fail them.',
+      },
+      unlikelyAlly: {
+        archetypeKey: 'storyteller',
+        description: 'The Storyteller can amplify the experiences your care work surfaces. The stories of healing and resilience you witness are powerful narratives the Storyteller knows how to share with the world.',
+      },
+      intentionalPartner: {
+        archetypeKey: 'strategist',
+        description: 'You center people\'s wellbeing; the Strategist centers campaign outcomes. You ask "what do our people need?" They ask "what will win?" Learning to navigate this tension is how movements avoid both burnout and defeat.',
+      },
+    },
   },
   diplomat: {
     key: 'diplomat', house: 'connection', name: 'The Diplomat',
@@ -125,12 +215,16 @@ export const archetypes = {
     orientationWeight: { insideOutside: -2, righteousnessRelationship: -2 },
     motivationBonus: ['policy', 'community', 'service'],
     description: 'You work the inside game. You maintain relationships with systems of power, negotiate concessions, and secure incremental gains. You stay at the table because the table is where deals are made.',
+    growthEdge: 'Your greatest risk is capture\u2014the gradual process by which sustained proximity to institutional power shifts your baseline for what is possible or worth fighting for. Your growth edge is maintaining radical accountability while exercising institutional fluency, building structures that keep you tethered to the communities whose interests you carry into institutional spaces.',
     exemplarName: 'Bryan Stevenson',
     exemplar: 'Bryan Stevenson \u2014 Equal Justice Initiative\'s inside strategy combined with narrative power; works within legal systems while using story to shift public understanding.',
     exemplarImage: null,
     secondExemplarName: 'Thurgood Marshall',
     secondExemplar: 'Thurgood Marshall \u2014 decades of strategic litigation culminating in Brown v. Board; built legal infrastructure through patient insider strategy and institutional relationship.',
     secondExemplarImage: 'thurgood-marshall.jpg',
+    thirdExemplarName: 'Cecilia Mu\u00f1oz',
+    thirdExemplar: 'Cecilia Mu\u00f1oz \u2014 navigated the tension between immigrant rights advocacy and institutional policymaking across decades, embodying the diplomat\'s central tension: staying at the table when the table produces outcomes your community opposes.',
+    thirdExemplarImage: null,
     icon: '/icons/diplomat.png',
     volunteerRoles: [
       'Legislative aide or policy intern',
@@ -142,6 +236,20 @@ export const archetypes = {
       buildInto: ['Electoral & Campaign Strategy', 'Power & Resource Mapping'],
       supplement: ['Communications & Narrative Strategy', 'Organizing & Base-Building'],
     },
+    relationships: {
+      bestFriend: {
+        archetypeKey: 'strategist',
+        description: 'The Strategist shares your appetite for calculated moves and long-term thinking. You work the inside game; they design the playbook. Together, you turn political opportunities into lasting policy wins.',
+      },
+      unlikelyAlly: {
+        archetypeKey: 'operator',
+        description: 'The Operator keeps your institutional relationships grounded in organizational reality\u2014budgets, timelines, capacity. Their operational discipline ensures your diplomatic gains translate into actual programmatic change.',
+      },
+      intentionalPartner: {
+        archetypeKey: 'agitator',
+        description: 'You stay at the table; the Agitator flips it. You cultivate relationships with power; they confront it. This is perhaps the most essential partnership in organizing\u2014the inside game and the outside game need each other.',
+      },
+    },
   },
   organizer: {
     key: 'organizer', house: 'action', name: 'The Organizer',
@@ -149,12 +257,16 @@ export const archetypes = {
     orientationWeight: { insideOutside: 0, righteousnessRelationship: 0 },
     motivationBonus: ['community', 'service', 'disruption'],
     description: 'You build the base. You go door to door, develop leaders, and construct the relational infrastructure that turns individuals into collective power. You are the engine of every movement.',
+    growthEdge: 'Your greatest risk is exhaustion disguised as dedication. Base-building is relentless, and you may struggle with delegation, building dependency rather than distributed leadership. Your growth edge is learning to build organizational systems that scale beyond your personal capacity and developing other people\'s ability to organize\u2014the most effective organizers work themselves out of a job.',
     exemplarName: 'Ella Baker',
     exemplar: 'Ella Baker \u2014 built SNCC\'s grassroots infrastructure; theorized participatory democracy and group-centered leadership as an alternative to charismatic models.',
     exemplarImage: 'ella-baker.jpg',
     secondExemplarName: 'Stacey Abrams',
     secondExemplar: 'Stacey Abrams \u2014 built voter infrastructure across Georgia at operational scale; combined relational organizing with data-driven systems and fundraising capacity.',
     secondExemplarImage: null,
+    thirdExemplarName: 'Cesar Chavez',
+    thirdExemplar: 'Cesar Chavez \u2014 built the United Farm Workers through methodical, community-based organizing among the most marginalized workers in America; combined door-to-door relationship-building with strategic use of boycotts and media.',
+    thirdExemplarImage: null,
     icon: '/icons/organizer.png',
     volunteerRoles: [
       'Canvasser or door-to-door organizer',
@@ -166,6 +278,20 @@ export const archetypes = {
       buildInto: ['Direct Service Supports & Mutual Aid', 'Power & Resource Mapping'],
       supplement: ['Resource & Capacity Development', 'Communications & Narrative Strategy'],
     },
+    relationships: {
+      bestFriend: {
+        archetypeKey: 'bridgeBuilder',
+        description: 'The Bridge-Builder shares your relational intelligence and talent for bringing people together. You develop leaders within communities; they connect those communities to each other. Together, you build power that is both deep and wide.',
+      },
+      unlikelyAlly: {
+        archetypeKey: 'operator',
+        description: 'The Operator might seem purely logistical, but their systems-thinking is what scales your organizing from a neighborhood to a movement. Your relational work needs their operational infrastructure.',
+      },
+      intentionalPartner: {
+        archetypeKey: 'analyst',
+        description: 'You build power through relationships, door by door; the Analyst builds understanding through data and frameworks. Your grassroots intelligence grounds their theory; their research validates your instincts.',
+      },
+    },
   },
   agitator: {
     key: 'agitator', house: 'action', name: 'The Agitator',
@@ -173,12 +299,16 @@ export const archetypes = {
     orientationWeight: { insideOutside: 2, righteousnessRelationship: 2 },
     motivationBonus: ['disruption', 'justice', 'narrative'],
     description: 'You raise the heat. You are willing to be disliked, to force uncomfortable confrontations, to create the crisis that makes the status quo untenable. You name what others won\'t.',
+    growthEdge: 'Your greatest risk is becoming addicted to confrontation. When disruption is your primary tool, every problem begins to look like a target. You may escalate when de-escalation would be more effective, or mistake the adrenaline of public confrontation for actual progress. Your growth edge is developing the strategic discipline to choose when to agitate and when to consolidate, and building relational skills that maintain alliances even as you challenge comfort.',
     exemplarName: 'Larry Kramer',
     exemplar: 'Larry Kramer \u2014 ACT UP\'s rage and confrontation; fused direct action with narrative to force the AIDS crisis into public consciousness.',
     exemplarImage: null,
     secondExemplarName: 'Marsha P. Johnson',
     secondExemplar: 'Marsha P. Johnson \u2014 Stonewall confrontation combined with tireless community care for homeless LGBTQ youth; embodied both righteous disruption and direct mutual aid.',
     secondExemplarImage: null,
+    thirdExemplarName: 'Ida B. Wells',
+    thirdExemplar: 'Ida B. Wells \u2014 used investigative journalism as a weapon of confrontation, documenting the epidemic of lynching and forcing a nation to confront atrocities it preferred to ignore. Agitation grounded in meticulous evidence.',
+    thirdExemplarImage: null,
     icon: '/icons/agitator.png',
     volunteerRoles: [
       'Direct action coordinator',
@@ -190,6 +320,20 @@ export const archetypes = {
       buildInto: ['Foundations of Power', 'Organizing & Base-Building'],
       supplement: ['Healing & Sustainability', 'Power & Resource Mapping'],
     },
+    relationships: {
+      bestFriend: {
+        archetypeKey: 'visionary',
+        description: 'The Visionary shares your fire and your willingness to demand what others call impossible. You raise the heat; they articulate the destination. Together, you create the moral urgency that forces change.',
+      },
+      unlikelyAlly: {
+        archetypeKey: 'guardian',
+        description: 'The Guardian\'s frontline mutual aid work embodies the care you fight for. While you confront systems, they catch the people those systems fail. Your disruption creates space; their care fills it.',
+      },
+      intentionalPartner: {
+        archetypeKey: 'diplomat',
+        description: 'You confront power; the Diplomat negotiates with it. You break norms; they build relationships. This creative tension between confrontation and negotiation is how movements actually win\u2014learning from each other is how you both get better.',
+      },
+    },
   },
   storyteller: {
     key: 'storyteller', house: 'action', name: 'The Storyteller',
@@ -197,12 +341,16 @@ export const archetypes = {
     orientationWeight: { insideOutside: 0, righteousnessRelationship: 0 },
     motivationBonus: ['narrative', 'justice', 'community'],
     description: 'You transform lived experience into narrative power. You make the invisible visible, and change what people feel before trying to change what they think.',
+    growthEdge: 'Your greatest risk is emotional depletion. When your primary instrument is your own capacity for emotional honesty, the work extracts a cost that analytical or operational roles do not. Your growth edge is pairing your narrative power with strategic and structural literacy\u2014so every story you tell is connected to a pathway for action\u2014and building the boundaries that protect your emotional capacity from being consumed by the work it fuels.',
     exemplarName: 'James Baldwin',
     exemplar: 'James Baldwin \u2014 narrative transformation of the American racial imagination; used essay, novel, and public testimony to make the invisible architecture of racism visible.',
     exemplarImage: 'james-baldwin.jpg',
     secondExemplarName: 'Fannie Lou Hamer',
     secondExemplar: 'Fannie Lou Hamer \u2014 testimony at the 1964 Democratic National Convention transformed national consciousness; combined personal narrative power with unflinching confrontation.',
     secondExemplarImage: 'fannie-lou-hamer.jpg',
+    thirdExemplarName: 'Ta-Nehisi Coates',
+    thirdExemplar: 'Ta-Nehisi Coates \u2014 reconstructed the narrative of American racial history through long-form journalism and memoir, reframing systemic racism as an ongoing structural reality with traceable mechanisms and calculable costs.',
+    thirdExemplarImage: null,
     icon: '/icons/storyteller.png',
     volunteerRoles: [
       'Social media content creator',
@@ -214,6 +362,20 @@ export const archetypes = {
       buildInto: ['Arts & Cultural Events', 'Foundations of Power'],
       supplement: ['Organizing & Base-Building', 'Healing & Sustainability'],
     },
+    relationships: {
+      bestFriend: {
+        archetypeKey: 'visionary',
+        description: 'The Visionary shares your gift for inspiration and communication. You transform lived experience into narrative; they transform narrative into moral vision. Together, you make the invisible visible and the impossible feel inevitable.',
+      },
+      unlikelyAlly: {
+        archetypeKey: 'healer',
+        description: 'The Healer witnesses stories of resilience and pain that never reach the public. Their care work surfaces the human experiences your storytelling can amplify\u2014and your narrative work gives meaning to the healing they facilitate.',
+      },
+      intentionalPartner: {
+        archetypeKey: 'architect',
+        description: 'You communicate through emotion and embodied experience; the Architect communicates through policy and institutional design. Your stories create the moral imperative for their structural solutions. Structure without story is bureaucracy; story without structure is wind.',
+      },
+    },
   },
   architect: {
     key: 'architect', house: 'infrastructure', name: 'The Architect',
@@ -221,12 +383,16 @@ export const archetypes = {
     orientationWeight: { insideOutside: -2, righteousnessRelationship: 0 },
     motivationBonus: ['policy', 'justice', 'disruption'],
     description: 'You build the policies, legal frameworks, and institutions that outlast any single campaign. You think in decades. You design systems that encode justice into structure.',
+    growthEdge: 'Your greatest risk is rigidity. Your investment in building durable systems can make you resistant to the disruption and flexibility movements sometimes require. You may prioritize process over people, or design systems so complex that only you can operate them. Your growth edge is building feedback loops into every system you design\u2014structures that keep you accountable to the people your architecture is supposed to serve.',
     exemplarName: 'Pauli Murray',
     exemplar: 'Pauli Murray \u2014 legal theorist whose work on race and sex discrimination laid the intellectual and constitutional groundwork used by Thurgood Marshall and Ruth Bader Ginsburg alike.',
     exemplarImage: 'pauli-murray.jpg',
     secondExemplarName: 'Evan Wolfson',
     secondExemplar: 'Evan Wolfson \u2014 designed the decades-long legal and political strategy that led to marriage equality; an architect of both constitutional argument and movement infrastructure.',
     secondExemplarImage: null,
+    thirdExemplarName: 'Frances Perkins',
+    thirdExemplar: 'Frances Perkins \u2014 designed the institutional architecture of the American social safety net\u2014Social Security, the minimum wage, unemployment insurance\u2014built as permanent infrastructure, not emergency measures.',
+    thirdExemplarImage: null,
     icon: '/icons/architect.png',
     volunteerRoles: [
       'Legal observer or court watcher',
@@ -238,6 +404,20 @@ export const archetypes = {
       buildInto: ['Resource & Capacity Development', 'Power & Resource Mapping'],
       supplement: ['Electoral & Campaign Strategy', 'Organizing & Base-Building'],
     },
+    relationships: {
+      bestFriend: {
+        archetypeKey: 'strategist',
+        description: 'The Strategist shares your systems-level thinking and long-term orientation. You design the institutional framework; they design the campaign to build support for it. Two architectural minds working at different scales.',
+      },
+      unlikelyAlly: {
+        archetypeKey: 'diplomat',
+        description: 'The Diplomat\'s institutional relationships give your policy designs a pathway to enactment. Your frameworks need their political navigation; their negotiations need your structural vision.',
+      },
+      intentionalPartner: {
+        archetypeKey: 'storyteller',
+        description: 'You build systems; the Storyteller gives them soul. Your policy framework needs narrative power to gain public support; their stories need institutional infrastructure to become lasting change. Structure without story is bureaucracy; story without structure is wind.',
+      },
+    },
   },
   operator: {
     key: 'operator', house: 'infrastructure', name: 'The Operator',
@@ -245,12 +425,16 @@ export const archetypes = {
     orientationWeight: { insideOutside: 0, righteousnessRelationship: 0 },
     motivationBonus: ['policy', 'community', 'service'],
     description: 'You run the machine. You fundraise, budget, manage logistics, and build the operational capacity without which no strategy survives contact with reality.',
+    growthEdge: 'Your greatest risk is losing the forest for the trees. Your focus on execution and operational sustainability can detach you from the strategic vision and moral urgency that give the operations their purpose. Your growth edge is developing vision and narrative literacy that keeps your operational work connected to mission, and building documentation and training systems that distribute operational capacity rather than concentrating it in your hands.',
     exemplarName: 'Fred Ross Sr.',
     exemplar: 'Fred Ross Sr. \u2014 trained Cesar Chavez and Dolores Huerta; built the Community Service Organization through methodical door-to-door organizing and operational systems that scaled movement capacity.',
     exemplarImage: null,
     secondExemplarName: 'Stacey Abrams',
     secondExemplar: 'Stacey Abrams (Operator dimension) \u2014 built the fundraising, data, and operational infrastructure that powered Fair Fight Action and Georgia\'s voter registration revolution.',
     secondExemplarImage: null,
+    thirdExemplarName: 'A. Philip Randolph',
+    thirdExemplar: 'A. Philip Randolph \u2014 built the Brotherhood of Sleeping Car Porters into the first successful Black labor union through decades of organizational management, fundraising, and operational persistence.',
+    thirdExemplarImage: null,
     icon: '/icons/operator.png',
     volunteerRoles: [
       'Event logistics coordinator',
@@ -262,6 +446,20 @@ export const archetypes = {
       buildInto: ['Power & Resource Mapping', 'Organizing & Base-Building'],
       supplement: ['Legislative & Policy Strategy', 'Healing & Sustainability'],
     },
+    relationships: {
+      bestFriend: {
+        archetypeKey: 'organizer',
+        description: 'The Organizer shares your leadership capacity and your understanding that movements run on logistics as much as inspiration. You build the operational machine; they build the relational engine. Together, you create organizations that actually work.',
+      },
+      unlikelyAlly: {
+        archetypeKey: 'diplomat',
+        description: 'The Diplomat\'s institutional relationships create opportunities that need operational execution. Your systems-thinking transforms their political wins into functioning programs and sustainable organizations.',
+      },
+      intentionalPartner: {
+        archetypeKey: 'visionary',
+        description: 'You ask "how do we do this?" The Visionary asks "why should we do this?" Without you, the vision stays a dream; without them, the operations lack purpose. This partnership transforms inspiration into implementation.',
+      },
+    },
   },
   guardian: {
     key: 'guardian', house: 'infrastructure', name: 'The Guardian',
@@ -269,12 +467,16 @@ export const archetypes = {
     orientationWeight: { insideOutside: 0, righteousnessRelationship: 1 },
     motivationBonus: ['service', 'community', 'justice'],
     description: 'You provide direct support and mutual aid to community members in crisis. You build peer-to-peer, non-hierarchical systems of care and protection. You are the front line of solidarity.',
+    growthEdge: 'Your greatest risk is crisis permanence\u2014becoming so embedded in immediate response that you never address the structural conditions producing the crises. You may also struggle with boundaries; when people are in crisis and you can help, saying no feels like abandonment. Your growth edge is connecting your direct service work to systemic analysis and structural advocacy, and building personal and organizational boundaries that make mutual aid sustainable rather than sacrificial.',
     exemplarName: 'Huey P. Newton',
     exemplar: 'Huey P. Newton \u2014 Black Panther Party\'s free breakfast programs, health clinics, and community defense; built mutual aid infrastructure rooted in a radical vision of community self-determination.',
     exemplarImage: 'huey-p-newton.jpg',
     secondExemplarName: 'Sylvia Rivera',
     secondExemplar: 'Sylvia Rivera \u2014 co-founded STAR (Street Transvestite Action Revolutionaries); ran a shelter for homeless trans youth from her own apartment while fighting for community survival.',
     secondExemplarImage: null,
+    thirdExemplarName: 'Mutual Aid Networks',
+    thirdExemplar: 'COVID-19 Mutual Aid Networks \u2014 thousands of neighborhood-level networks organized to provide groceries, medication, and community connection, demonstrating the speed and responsiveness of non-hierarchical, community-based care infrastructure.',
+    thirdExemplarImage: null,
     icon: '/icons/guardian.png',
     volunteerRoles: [
       'Mutual aid distribution volunteer',
@@ -285,6 +487,20 @@ export const archetypes = {
       startWith: ['Direct Service Supports & Mutual Aid', 'Healing & Sustainability'],
       buildInto: ['Organizing & Base-Building', 'Arts & Cultural Events'],
       supplement: ['Resource & Capacity Development', 'Communications & Narrative Strategy'],
+    },
+    relationships: {
+      bestFriend: {
+        archetypeKey: 'healer',
+        description: 'The Healer shares your commitment to direct, embodied care. You provide mutual aid and frontline support; they provide emotional healing and sustainability. Together, you build the infrastructure of care that keeps movements alive.',
+      },
+      unlikelyAlly: {
+        archetypeKey: 'organizer',
+        description: 'The Organizer can channel the community connections you build through mutual aid into organized political power. Your care work creates trust; their organizing converts that trust into collective action.',
+      },
+      intentionalPartner: {
+        archetypeKey: 'analyst',
+        description: 'You\'re in the trenches providing direct care; the Analyst studies the systems that create the crises you respond to. Your mutual aid work generates the evidence their research needs; their analysis can reduce the need for the crisis response you provide.',
+      },
     },
   },
 };

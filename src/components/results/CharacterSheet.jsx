@@ -7,6 +7,7 @@ import RadarChart from './RadarChart';
 import StatBar from './StatBar';
 import SpectrumSlider from './SpectrumSlider';
 import LearningPath from './LearningPath';
+import MovementRelationships from './MovementRelationships';
 import ShareControls from './ShareControls';
 import BrandingFooter from './BrandingFooter';
 import ArchetypeIcon from '../icons/ArchetypeIcon';
@@ -108,6 +109,17 @@ export default function CharacterSheet() {
               />
             </section>
 
+            {/* Movement Relationships */}
+            <section>
+              <h2 className="text-lg font-bold text-navy mb-3 flex items-center gap-2">
+                <span className="text-gold">&#x25C6;</span> Your Movement Relationships
+              </h2>
+              <MovementRelationships
+                primaryArchetype={primaryArchetype}
+                houseColor={house.color}
+              />
+            </section>
+
             {/* Historical Exemplars */}
             <section>
               <h2 className="text-lg font-bold text-navy mb-3 flex items-center gap-2">
@@ -117,6 +129,9 @@ export default function CharacterSheet() {
                 {[
                   { name: primaryArchetype.exemplarName, text: primaryArchetype.exemplar, image: primaryArchetype.exemplarImage, opacity: 'text-charcoal/80' },
                   { name: primaryArchetype.secondExemplarName, text: primaryArchetype.secondExemplar, image: primaryArchetype.secondExemplarImage, opacity: 'text-charcoal/60' },
+                  ...(primaryArchetype.thirdExemplarName ? [{
+                    name: primaryArchetype.thirdExemplarName, text: primaryArchetype.thirdExemplar, image: primaryArchetype.thirdExemplarImage, opacity: 'text-charcoal/50'
+                  }] : []),
                 ].map((ex) => (
                   <div key={ex.name} className="flex gap-3 bg-warm-white/50 p-3 rounded-lg">
                     {ex.image && (
@@ -154,6 +169,22 @@ export default function CharacterSheet() {
                 ))}
               </div>
             </section>
+
+            {/* Growth Edge */}
+            {primaryArchetype.growthEdge && (
+              <section>
+                <h2 className="text-lg font-bold text-navy mb-3 flex items-center gap-2">
+                  <span className="text-teal">&#x25C6;</span> Your Growth Edge
+                </h2>
+                <div className="bg-warm-white/50 rounded-lg p-4 border-l-3"
+                  style={{ borderLeftColor: house.color }}
+                >
+                  <p className="text-sm text-charcoal/70 leading-relaxed">
+                    {primaryArchetype.growthEdge}
+                  </p>
+                </div>
+              </section>
+            )}
 
             {/* Learning Path */}
             <section>
