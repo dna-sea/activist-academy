@@ -18,6 +18,8 @@ import ArchetypeReveal from './components/results/ArchetypeReveal';
 import CharacterSheet from './components/results/CharacterSheet';
 import AllArchetypesPage from './components/pages/AllArchetypesPage';
 import HouseDetailPage from './components/pages/HouseDetailPage';
+import ArchetypeProfilePage from './components/pages/ArchetypeProfilePage';
+import HouseProfilePage from './components/pages/HouseProfilePage';
 import ErrorBoundary from './components/layout/ErrorBoundary';
 
 function QuizApp() {
@@ -156,6 +158,18 @@ function QuizApp() {
         {quiz.currentScreen === SCREENS.HOUSE_DETAIL && (
           <motion.div key="house-detail" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={getTransition(0.3)}>
             <HouseDetailPage />
+          </motion.div>
+        )}
+
+        {quiz.currentScreen === SCREENS.ARCHETYPE_PROFILE && (
+          <motion.div key="archetype-profile" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={getTransition(0.3)}>
+            <ArchetypeProfilePage />
+          </motion.div>
+        )}
+
+        {quiz.currentScreen === SCREENS.HOUSE_PROFILE && (
+          <motion.div key="house-profile" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={getTransition(0.3)}>
+            <HouseProfilePage />
           </motion.div>
         )}
       </AnimatePresence>

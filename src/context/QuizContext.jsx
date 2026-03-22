@@ -51,6 +51,8 @@ const initialState = {
   answers: [],
   results: null,
   selectedHouseId: null,
+  selectedArchetypeKey: null,
+  previousScreen: null,
 };
 
 const phaseKeys = ['motivation', 'stats', 'skills', 'orientation'];
@@ -219,6 +221,32 @@ function quizReducer(state, action) {
     case 'BACK_TO_CHARACTER_SHEET':
       return { ...state, currentScreen: SCREENS.CHARACTER_SHEET };
 
+    case 'SHOW_ARCHETYPE_PROFILE':
+      return {
+        ...state,
+        previousScreen: state.currentScreen,
+        currentScreen: SCREENS.ARCHETYPE_PROFILE,
+        selectedArchetypeKey: action.payload,
+      };
+
+    case 'SHOW_HOUSE_PROFILE':
+      return {
+        ...state,
+        previousScreen: state.currentScreen,
+        currentScreen: SCREENS.HOUSE_PROFILE,
+        selectedHouseId: action.payload,
+      };
+
+    case 'BACK_TO_LANDING':
+      return { ...state, currentScreen: SCREENS.LANDING };
+
+    case 'GO_BACK_FROM_PROFILE':
+      return {
+        ...state,
+        currentScreen: state.previousScreen || SCREENS.LANDING,
+        previousScreen: null,
+      };
+
     case 'RESET_QUIZ':
       return { ...initialState };
 
@@ -257,5 +285,9 @@ export function useQuiz() {
     showAllArchetypes: () => dispatch({ type: 'SHOW_ALL_ARCHETYPES' }),
     showHouseDetail: (houseId) => dispatch({ type: 'SHOW_HOUSE_DETAIL', payload: houseId }),
     backToCharacterSheet: () => dispatch({ type: 'BACK_TO_CHARACTER_SHEET' }),
+    showArchetypeProfile: (key) => dispatch({ type: 'SHOW_ARCHETYPE_PROFILE', payload: key }),
+    showHouseProfile: (houseId) => dispatch({ type: 'SHOW_HOUSE_PROFILE', payload: houseId }),
+    backToLanding: () => dispatch({ type: 'BACK_TO_LANDING' }),
+    goBackFromProfile: () => dispatch({ type: 'GO_BACK_FROM_PROFILE' }),
   };
 }

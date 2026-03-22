@@ -55,7 +55,7 @@ function Section({ children, className = '' }) {
 }
 
 export default function LandingPage() {
-  const { startQuiz } = useQuiz();
+  const { startQuiz, showArchetypeProfile, showHouseProfile } = useQuiz();
   const [showPrivacy, setShowPrivacy] = useState(false);
 
   return (
@@ -107,16 +107,22 @@ export default function LandingPage() {
           className="relative z-10 flex justify-center items-end gap-1 md:gap-2 px-4 pb-8 md:pb-12 overflow-x-auto"
         >
           {ARCHETYPE_CHARACTERS.map((char, i) => (
-            <motion.img
+            <motion.button
               key={char.key}
-              src={`/icons/${char.key}.png`}
-              alt={char.key.replace(/-/g, ' ')}
+              onClick={() => showArchetypeProfile(char.key === 'bridge-builder' ? 'bridgeBuilder' : char.key)}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={getTransition(0.4, { delay: 0.1 + i * 0.05 })}
-              className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-lg object-cover flex-shrink-0"
-              draggable={false}
-            />
+              className="flex-shrink-0 cursor-pointer hover:scale-110 transition-transform rounded-lg overflow-hidden"
+              title={char.key.replace(/-/g, ' ')}
+            >
+              <img
+                src={`/icons/${char.key}.png`}
+                alt={char.key.replace(/-/g, ' ')}
+                className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-lg object-cover"
+                draggable={false}
+              />
+            </motion.button>
           ))}
         </motion.div>
       </div>
@@ -174,9 +180,10 @@ export default function LandingPage() {
           </p>
           <div className="grid grid-cols-2 gap-3">
             {HOUSES.map((house) => (
-              <div
+              <button
                 key={house.name}
-                className="rounded-xl p-4 text-center border border-white/10 flex flex-col items-center"
+                onClick={() => showHouseProfile(house.name.toLowerCase())}
+                className="rounded-xl p-4 text-center border border-white/10 flex flex-col items-center cursor-pointer hover:scale-[1.03] transition-transform"
                 style={{ backgroundColor: house.color + '20' }}
               >
                 <img
@@ -189,7 +196,7 @@ export default function LandingPage() {
                   House of {house.name}
                 </h3>
                 <p className="text-warm-white/60 text-xs md:text-sm leading-relaxed">{house.tagline}</p>
-              </div>
+              </button>
             ))}
           </div>
         </Section>

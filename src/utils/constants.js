@@ -7,6 +7,8 @@ export const SCREENS = {
   CHARACTER_SHEET: 'character_sheet',
   ALL_ARCHETYPES: 'all_archetypes',
   HOUSE_DETAIL: 'house_detail',
+  ARCHETYPE_PROFILE: 'archetype_profile',
+  HOUSE_PROFILE: 'house_profile',
 };
 
 export const SITE_URL = 'https://activist-academy.vercel.app';
