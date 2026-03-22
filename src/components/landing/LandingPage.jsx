@@ -2,19 +2,29 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useQuiz } from '../../context/QuizContext';
 import { getTransition } from '../../utils/accessibility';
-import {
-  VisionIcon, ConnectionIcon, ActionIcon, InfrastructureIcon,
-  ArchetypeIcon, HouseIcon, LearningPathIcon, DiscoveryBoltIcon,
-} from '../icons/LandingIcons';
 import { GJLAShieldIcon } from '../icons/GJLALogo';
 
-const HOUSE_ICONS = { Vision: VisionIcon, Connection: ConnectionIcon, Action: ActionIcon, Infrastructure: InfrastructureIcon };
+/* ── Archetype character filenames (same order as archetypes.js) ── */
+const ARCHETYPE_CHARACTERS = [
+  { key: 'visionary', house: 'vision' },
+  { key: 'strategist', house: 'vision' },
+  { key: 'analyst', house: 'vision' },
+  { key: 'bridge-builder', house: 'connection' },
+  { key: 'healer', house: 'connection' },
+  { key: 'diplomat', house: 'connection' },
+  { key: 'organizer', house: 'action' },
+  { key: 'agitator', house: 'action' },
+  { key: 'storyteller', house: 'action' },
+  { key: 'architect', house: 'infrastructure' },
+  { key: 'operator', house: 'infrastructure' },
+  { key: 'guardian', house: 'infrastructure' },
+];
 
 const HOUSES = [
-  { name: 'Vision', color: '#6B3FA0', tagline: 'See the destination, chart the course' },
-  { name: 'Connection', color: '#2D8659', tagline: 'Build relationships across difference' },
-  { name: 'Action', color: '#C4652A', tagline: 'Mobilize energy, create momentum' },
-  { name: 'Infrastructure', color: '#3A6B8C', tagline: 'Build systems that outlast campaigns' },
+  { name: 'Vision', color: '#6B3FA0', tagline: 'See the destination, chart the course', icon: 'house-vision.png' },
+  { name: 'Connection', color: '#2D8659', tagline: 'Build relationships across difference', icon: 'house-connection.png' },
+  { name: 'Action', color: '#C4652A', tagline: 'Mobilize energy, create momentum', icon: 'house-action.png' },
+  { name: 'Infrastructure', color: '#3A6B8C', tagline: 'Build systems that outlast campaigns', icon: 'house-infrastructure.png' },
 ];
 
 const PHASES = [
@@ -50,41 +60,64 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-navy">
-      {/* ── Hero ── */}
-      <div className="flex flex-col items-center justify-center px-6 pt-16 pb-12 md:pt-24 md:pb-16 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={getTransition(0.6)}
-          className="max-w-2xl mx-auto"
-        >
+      {/* ── Hero: Geometric Background + 12 Character Banner ── */}
+      <div className="relative overflow-hidden">
+        {/* Background image */}
+        <img
+          src="/icons/landing/hero-bg.png"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover opacity-40"
+          draggable={false}
+        />
+        {/* Gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/60 to-navy" />
+
+        <div className="relative z-10 flex flex-col items-center justify-center px-6 pt-16 pb-6 md:pt-24 md:pb-10 text-center">
           <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={getTransition(0.5, { delay: 0.2 })}
-            className="inline-block mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={getTransition(0.6)}
+            className="max-w-2xl mx-auto"
           >
-            <DiscoveryBoltIcon size={80} />
+            <h1 className="text-4xl md:text-6xl font-black text-warm-white mb-3 leading-tight tracking-tight">
+              The Activist Academy
+            </h1>
+            <p className="text-xl md:text-2xl text-teal font-semibold mb-4">
+              Discovery Engine
+            </p>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={getTransition(0.5, { delay: 0.4 })}
+              className="text-lg md:text-xl text-warm-white/80 mb-8 leading-relaxed max-w-lg mx-auto"
+            >
+              Find out which of 12 activist archetypes matches your strengths,
+              discover your house, and get a personalized learning path through
+              the Activist Academy curriculum.
+            </motion.p>
           </motion.div>
+        </div>
 
-          <h1 className="text-4xl md:text-6xl font-black text-warm-white mb-3 leading-tight tracking-tight">
-            The Activist Academy
-          </h1>
-          <p className="text-xl md:text-2xl text-teal font-semibold mb-6">
-            Discovery Engine
-          </p>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={getTransition(0.5, { delay: 0.4 })}
-            className="text-lg md:text-xl text-warm-white/80 mb-10 leading-relaxed max-w-lg mx-auto"
-          >
-            Find out which of 12 activist archetypes matches your strengths,
-            discover your house, and get a personalized learning path through
-            the Activist Academy curriculum.
-          </motion.p>
-
+        {/* 12 Character Strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={getTransition(0.7, { delay: 0.3 })}
+          className="relative z-10 flex justify-center items-end gap-1 md:gap-2 px-4 pb-8 md:pb-12 overflow-x-auto"
+        >
+          {ARCHETYPE_CHARACTERS.map((char, i) => (
+            <motion.img
+              key={char.key}
+              src={`/icons/${char.key}.png`}
+              alt={char.key.replace(/-/g, ' ')}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={getTransition(0.4, { delay: 0.1 + i * 0.05 })}
+              className="w-12 h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 rounded-lg object-cover flex-shrink-0"
+              draggable={false}
+            />
+          ))}
         </motion.div>
       </div>
 
@@ -97,17 +130,17 @@ export default function LandingPage() {
           <div className="grid gap-4 md:grid-cols-3">
             {[
               {
-                Icon: ArchetypeIcon,
+                icon: 'discover-archetype.png',
                 title: 'Your Archetype',
                 desc: 'One of 12 distinct activist archetypes — from Visionary to Guardian — based on your unique combination of strengths, motivations, and strategic instincts.',
               },
               {
-                Icon: HouseIcon,
+                icon: 'discover-house.png',
                 title: 'Your House',
                 desc: 'Four houses represent different movement functions: Vision, Connection, Action, and Infrastructure. Find where you belong.',
               },
               {
-                Icon: LearningPathIcon,
+                icon: 'discover-path.png',
                 title: 'Your Learning Path',
                 desc: 'A personalized curriculum recommendation across 13 schools of activist education, tailored to build on what you already bring.',
               },
@@ -116,7 +149,12 @@ export default function LandingPage() {
                 key={item.title}
                 className="bg-warm-white/5 border border-warm-white/10 rounded-2xl p-5 text-center flex flex-col items-center"
               >
-                <item.Icon size={48} className="mb-3" />
+                <img
+                  src={`/icons/landing/${item.icon}`}
+                  alt=""
+                  className="w-14 h-14 md:w-16 md:h-16 rounded-xl object-cover mb-3"
+                  draggable={false}
+                />
                 <h3 className="text-warm-white font-bold text-lg mb-2">{item.title}</h3>
                 <p className="text-warm-white/60 text-sm md:text-base leading-relaxed">{item.desc}</p>
               </div>
@@ -135,22 +173,24 @@ export default function LandingPage() {
             Every movement needs all four. Which one calls to you?
           </p>
           <div className="grid grid-cols-2 gap-3">
-            {HOUSES.map((house) => {
-              const Icon = HOUSE_ICONS[house.name];
-              return (
-                <div
-                  key={house.name}
-                  className="rounded-xl p-4 text-center border border-white/10 flex flex-col items-center"
-                  style={{ backgroundColor: house.color + '20' }}
-                >
-                  <Icon size={40} className="mb-2" />
-                  <h3 className="font-bold text-warm-white text-sm md:text-base mb-1">
-                    House of {house.name}
-                  </h3>
-                  <p className="text-warm-white/60 text-xs md:text-sm leading-relaxed">{house.tagline}</p>
-                </div>
-              );
-            })}
+            {HOUSES.map((house) => (
+              <div
+                key={house.name}
+                className="rounded-xl p-4 text-center border border-white/10 flex flex-col items-center"
+                style={{ backgroundColor: house.color + '20' }}
+              >
+                <img
+                  src={`/icons/landing/${house.icon}`}
+                  alt=""
+                  className="w-12 h-12 md:w-14 md:h-14 rounded-lg object-cover mb-2"
+                  draggable={false}
+                />
+                <h3 className="font-bold text-warm-white text-sm md:text-base mb-1">
+                  House of {house.name}
+                </h3>
+                <p className="text-warm-white/60 text-xs md:text-sm leading-relaxed">{house.tagline}</p>
+              </div>
+            ))}
           </div>
         </Section>
       </div>
@@ -187,16 +227,12 @@ export default function LandingPage() {
       {/* ── Strengths-Based Callout ── */}
       <div className="px-6 py-12 md:py-16 bg-warm-white/[0.03]">
         <Section className="max-w-xl mx-auto text-center">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" width={48} height={48} className="mx-auto mb-4">
-            <circle cx="24" cy="20" r="10" stroke="#D4A843" strokeWidth="2" />
-            <path d="M20 30H28V34C28 36 26 38 24 38C22 38 20 36 20 34V30Z" stroke="#D4A843" strokeWidth="2" strokeLinejoin="round" />
-            <line x1="24" y1="6" x2="24" y2="8" stroke="#D4A843" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
-            <line x1="12" y1="12" x2="13.5" y2="13.5" stroke="#D4A843" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
-            <line x1="36" y1="12" x2="34.5" y2="13.5" stroke="#D4A843" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
-            <line x1="8" y1="20" x2="10" y2="20" stroke="#D4A843" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
-            <line x1="38" y1="20" x2="40" y2="20" stroke="#D4A843" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
-            <path d="M19 20C19 17.2 21.2 15 24 15" stroke="#D4A843" strokeWidth="1" strokeLinecap="round" opacity="0.4" />
-          </svg>
+          <img
+            src="/icons/landing/lightbulb.png"
+            alt=""
+            className="w-14 h-14 md:w-16 md:h-16 rounded-xl object-cover mx-auto mb-4"
+            draggable={false}
+          />
           <h2 className="text-xl md:text-2xl font-bold text-warm-white mb-3">
             This Isn't a Test
           </h2>
@@ -215,28 +251,12 @@ export default function LandingPage() {
       {/* ── Before You Begin ── */}
       <div className="px-6 py-12 md:py-16">
         <Section className="max-w-xl mx-auto text-center">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" width={48} height={48} className="mx-auto mb-4">
-            {/* Shield outline */}
-            <path
-              d="M24 4 L42 12 L42 26 C42 36 34 43 24 46 C14 43 6 36 6 26 L6 12 Z"
-              stroke="#2A7F8E"
-              strokeWidth="2"
-              strokeLinejoin="round"
-              fill="none"
-            />
-            {/* Lock body */}
-            <rect x="18" y="22" width="12" height="10" rx="2" stroke="#2A7F8E" strokeWidth="1.5" fill="none" />
-            {/* Lock shackle */}
-            <path
-              d="M20 22 V18 C20 15 22 13 24 13 C26 13 28 15 28 18 V22"
-              stroke="#2A7F8E"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              fill="none"
-            />
-            {/* Keyhole */}
-            <circle cx="24" cy="27" r="1.5" fill="#2A7F8E" opacity="0.6" />
-          </svg>
+          <img
+            src="/icons/landing/shield-lock.png"
+            alt=""
+            className="w-14 h-14 md:w-16 md:h-16 rounded-xl object-cover mx-auto mb-4"
+            draggable={false}
+          />
           <h2 className="text-xl md:text-2xl font-bold text-warm-white mb-3">
             Before You Begin
           </h2>
