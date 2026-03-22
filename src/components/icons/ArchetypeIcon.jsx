@@ -1,6 +1,6 @@
 import { HOUSE_COLORS } from '../../utils/constants';
 
-// Map camelCase archetype keys to kebab-case SVG filenames in /public/icons/
+// Map camelCase archetype keys to kebab-case PNG filenames in /public/icons/
 const ICON_FILES = {
   visionary: 'visionary',
   strategist: 'strategist',
@@ -57,7 +57,7 @@ export default function ArchetypeIcon({ archetype, size = 120, className = '' })
       aria-label={`${normalizedKey} archetype icon`}
     >
       <img
-        src={`/icons/${filename}.svg`}
+        src={`/icons/${filename}.png`}
         alt=""
         width={size}
         height={size}
