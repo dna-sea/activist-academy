@@ -20,6 +20,8 @@ import AllArchetypesPage from './components/pages/AllArchetypesPage';
 import HouseDetailPage from './components/pages/HouseDetailPage';
 import ArchetypeProfilePage from './components/pages/ArchetypeProfilePage';
 import HouseProfilePage from './components/pages/HouseProfilePage';
+import SavedProfilePage from './components/pages/SavedProfilePage';
+import { AuthProvider } from './context/AuthContext';
 import ErrorBoundary from './components/layout/ErrorBoundary';
 
 function QuizApp() {
@@ -172,6 +174,12 @@ function QuizApp() {
             <HouseProfilePage />
           </motion.div>
         )}
+
+        {quiz.currentScreen === SCREENS.SAVED_PROFILE && (
+          <motion.div key="saved-profile" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={getTransition(0.3)}>
+            <SavedProfilePage />
+          </motion.div>
+        )}
       </AnimatePresence>
     </>
   );
@@ -180,9 +188,11 @@ function QuizApp() {
 export default function App() {
   return (
     <ErrorBoundary>
-      <QuizProvider>
-        <QuizApp />
-      </QuizProvider>
+      <AuthProvider>
+        <QuizProvider>
+          <QuizApp />
+        </QuizProvider>
+      </AuthProvider>
     </ErrorBoundary>
   );
 }

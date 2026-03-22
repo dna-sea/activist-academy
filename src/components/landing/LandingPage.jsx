@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useQuiz } from '../../context/QuizContext';
+import { useAuth, signOut } from '../../context/AuthContext';
+import { isSupabaseConfigured } from '../../lib/supabase';
 import { getTransition } from '../../utils/accessibility';
 import { GJLAShieldIcon } from '../icons/GJLALogo';
+import AuthModal from '../auth/AuthModal';
 
 /* ── Archetype character filenames (same order as archetypes.js) ── */
 const ARCHETYPE_CHARACTERS = [
@@ -55,11 +58,43 @@ function Section({ children, className = '' }) {
 }
 
 export default function LandingPage() {
-  const { startQuiz, showArchetypeProfile, showHouseProfile } = useQuiz();
+  const { startQuiz, showArchetypeProfile, showHouseProfile, showSavedProfile } = useQuiz();
+  const { user } = useAuth();
   const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
 
   return (
     <div className="min-h-screen bg-navy">
+      {/* ── Auth bar ── */}
+      {isSupabaseConfigured() && (
+        <div className="absolute top-0 right-0 z-20 p-4">
+          {user ? (
+            <div className="flex items-center gap-3">
+              <button
+                onClick={showSavedProfile}
+                className="text-warm-white/70 hover:text-warm-white text-sm font-medium cursor-pointer transition-colors"
+              >
+                My Profile
+              </button>
+              <button
+                onClick={() => signOut()}
+                className="text-warm-white/40 hover:text-warm-white/60 text-xs cursor-pointer transition-colors"
+              >
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setShowAuth(true)}
+              className="text-warm-white/70 hover:text-warm-white text-sm font-medium cursor-pointer
+                         bg-warm-white/10 hover:bg-warm-white/15 px-4 py-2 rounded-lg transition-colors"
+            >
+              Sign In
+            </button>
+          )}
+        </div>
+      )}
+
       {/* ── Hero: Geometric Background + 12 Character Banner ── */}
       <div className="relative overflow-hidden">
         {/* Background image */}
@@ -268,9 +303,9 @@ export default function LandingPage() {
             Before You Begin
           </h2>
           <p className="text-warm-white/70 text-sm md:text-base leading-relaxed mb-3">
-            Your privacy is our priority. This quiz runs entirely in your
-            browser — no data is collected, stored, or sent to any server. That
-            also means there's no way to save your progress and return later, so
+            Your privacy is our priority. This quiz processes your answers
+            entirely in your browser. If you create an account, your results
+            are saved securely so you can return to them anytime. Otherwise,
             set aside 20–30 minutes to complete it in one sitting.
           </p>
           <p className="text-warm-white/70 text-sm md:text-base leading-relaxed">
@@ -369,30 +404,35 @@ export default function LandingPage() {
                   <strong className="text-warm-white">Last updated:</strong> March 2026
                 </p>
 
-                <h3 className="text-warm-white font-semibold text-base">No Data Collection</h3>
+                <h3 className="text-warm-white font-semibold text-base">Quiz Processing</h3>
                 <p>
-                  The Activist Academy Discovery Engine does not collect, store, or retain any
-                  personal data. All quiz responses are processed entirely in your browser and
-                  are never sent to any server.
+                  All quiz responses are processed entirely in your browser. The scoring
+                  algorithm runs on your device — your answers are never sent to a server
+                  for calculation.
+                </p>
+
+                <h3 className="text-warm-white font-semibold text-base">Optional Accounts</h3>
+                <p>
+                  Creating an account is optional. If you sign up, we store your email
+                  address, display name, and quiz results so you can return to them later.
+                  Account data is stored securely in a hosted PostgreSQL database (Supabase).
+                  You can delete your account and all associated data at any time.
+                </p>
+                <p>
+                  If you take the quiz without signing in, no data is stored anywhere —
+                  your results exist only in your browser for the duration of your session.
                 </p>
 
                 <h3 className="text-warm-white font-semibold text-base">No Data Sales</h3>
                 <p>
                   We do not sell, trade, rent, or otherwise share any user data with third
-                  parties. Since we do not collect data, there is nothing to sell.
+                  parties. Your data is used solely to provide you with your saved results.
                 </p>
 
                 <h3 className="text-warm-white font-semibold text-base">No Tracking or Analytics</h3>
                 <p>
                   This application does not use cookies, tracking pixels, analytics services,
                   or any other form of user tracking. Your experience is completely private.
-                </p>
-
-                <h3 className="text-warm-white font-semibold text-base">Local Processing Only</h3>
-                <p>
-                  Your quiz answers, scores, and archetype results are calculated entirely
-                  on your device. When you close or refresh the page, all data is gone.
-                  Nothing is stored in your browser's local storage or sent externally.
                 </p>
 
                 <h3 className="text-warm-white font-semibold text-base">Image Export</h3>
@@ -419,6 +459,9 @@ export default function LandingPage() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* ── Auth Modal ── */}
+      <AuthModal open={showAuth} onClose={() => setShowAuth(false)} />
     </div>
   );
 }

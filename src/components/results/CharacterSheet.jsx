@@ -1,6 +1,9 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useQuiz } from '../../context/QuizContext';
+import { useAuth } from '../../context/AuthContext';
+import { isSupabaseConfigured } from '../../lib/supabase';
+import { saveProfile } from '../../lib/profiles';
 import { MOTIVATION_LABELS } from '../../utils/constants';
 import { getTransition } from '../../utils/accessibility';
 import RadarChart from './RadarChart';
@@ -11,10 +14,15 @@ import MovementRelationships from './MovementRelationships';
 import ShareControls from './ShareControls';
 import BrandingFooter from './BrandingFooter';
 import ArchetypeIcon from '../icons/ArchetypeIcon';
+import AuthModal from '../auth/AuthModal';
 
 export default function CharacterSheet() {
   const { results, showHouseDetail, showAllArchetypes } = useQuiz();
+  const { user } = useAuth();
   const sheetRef = useRef(null);
+  const [saved, setSaved] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [showAuth, setShowAuth] = useState(false);
 
   if (!results) return null;
 
@@ -231,8 +239,58 @@ export default function CharacterSheet() {
           className="mt-6"
         >
           <ShareControls sheetRef={sheetRef} />
+
+          {/* Save to account prompt */}
+          {isSupabaseConfigured() && !saved && (
+            <div className="mt-4 p-4 bg-navy/5 border border-navy/10 rounded-xl text-center">
+              {user ? (
+                <>
+                  <p className="text-charcoal/60 text-sm mb-3">
+                    Save your results to your account so you can return to them anytime.
+                  </p>
+                  <button
+                    onClick={async () => {
+                      setSaving(true);
+                      const { error } = await saveProfile(user.id, results);
+                      setSaving(false);
+                      if (!error) setSaved(true);
+                    }}
+                    disabled={saving}
+                    className="bg-teal text-white font-semibold text-sm px-6 py-2.5 rounded-xl
+                               hover:bg-teal/90 transition-colors cursor-pointer disabled:opacity-50"
+                  >
+                    {saving ? 'Saving...' : 'Save to My Account'}
+                  </button>
+                </>
+              ) : (
+                <>
+                  <p className="text-charcoal/60 text-sm mb-3">
+                    Create an account to save your results and return to them anytime.
+                  </p>
+                  <button
+                    onClick={() => setShowAuth(true)}
+                    className="bg-teal text-white font-semibold text-sm px-6 py-2.5 rounded-xl
+                               hover:bg-teal/90 transition-colors cursor-pointer"
+                  >
+                    Sign Up to Save
+                  </button>
+                </>
+              )}
+            </div>
+          )}
+
+          {saved && (
+            <div className="mt-4 p-3 bg-teal/10 border border-teal/20 rounded-xl text-center">
+              <p className="text-teal font-semibold text-sm">
+                Results saved to your account
+              </p>
+            </div>
+          )}
         </motion.div>
       </div>
+
+      {/* Auth Modal */}
+      <AuthModal open={showAuth} onClose={() => setShowAuth(false)} />
     </div>
   );
 }

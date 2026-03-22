@@ -247,6 +247,16 @@ function quizReducer(state, action) {
         previousScreen: null,
       };
 
+    case 'SHOW_SAVED_PROFILE':
+      return { ...state, currentScreen: SCREENS.SAVED_PROFILE };
+
+    case 'LOAD_SAVED_RESULTS':
+      return {
+        ...state,
+        results: action.payload,
+        currentScreen: SCREENS.CHARACTER_SHEET,
+      };
+
     case 'RESET_QUIZ':
       return { ...initialState };
 
@@ -289,5 +299,7 @@ export function useQuiz() {
     showHouseProfile: (houseId) => dispatch({ type: 'SHOW_HOUSE_PROFILE', payload: houseId }),
     backToLanding: () => dispatch({ type: 'BACK_TO_LANDING' }),
     goBackFromProfile: () => dispatch({ type: 'GO_BACK_FROM_PROFILE' }),
+    showSavedProfile: () => dispatch({ type: 'SHOW_SAVED_PROFILE' }),
+    loadSavedResults: (results) => dispatch({ type: 'LOAD_SAVED_RESULTS', payload: results }),
   };
 }

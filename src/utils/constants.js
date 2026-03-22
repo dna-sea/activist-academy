@@ -9,6 +9,7 @@ export const SCREENS = {
   HOUSE_DETAIL: 'house_detail',
   ARCHETYPE_PROFILE: 'archetype_profile',
   HOUSE_PROFILE: 'house_profile',
+  SAVED_PROFILE: 'saved_profile',
 };
 
 export const SITE_URL = 'https://activist-academy.vercel.app';
