@@ -34,6 +34,12 @@ export default function HouseProfilePage() {
         className="px-6 py-12 md:py-16 text-center"
         style={{ background: `linear-gradient(135deg, ${house.color}, ${house.color}CC)` }}
       >
+        <img
+          src={`/icons/landing/house-${house.id}.png`}
+          alt=""
+          className="w-20 h-20 md:w-24 md:h-24 rounded-xl object-cover mx-auto mb-4"
+          draggable={false}
+        />
         <p
           className="text-xs font-bold uppercase tracking-widest mb-3"
           style={{ color: 'rgba(255,255,255,0.6)' }}
